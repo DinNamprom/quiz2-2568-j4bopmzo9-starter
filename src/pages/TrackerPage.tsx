@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Stack, Title, Divider, Container } from "@mantine/core";
-import { v4 as uuidv4 } from "uuid";
+//import { v4 as uuidv4 } from "uuid";
 import ItemCard from "../components/ItemCard";
 import Modal from "../components/Modal";
 
@@ -15,14 +15,14 @@ type FoodItem = {
 export default function FoodTracker() {
   const [opened, setOpened] = useState(false);
   const [items, setItems] = useState<FoodItem[]>([]);
-  const categories = ["Main Course", "Drink", "Dessert"];
+  //const categories = ["Main Course", "Drink", "Dessert"];
 
   const open = () => {
     setOpened(!opened);
   };
 
   const Item = () => {
-
+    setItems(items);
   };
 
   return (

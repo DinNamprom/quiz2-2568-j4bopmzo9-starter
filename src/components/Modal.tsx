@@ -2,10 +2,8 @@ import { useState } from "react";
 import {
   Modal,
   TextInput,
-  NumberInput,
   Select,
   Button,
-  Stack,
   Container,
 } from "@mantine/core";
 
