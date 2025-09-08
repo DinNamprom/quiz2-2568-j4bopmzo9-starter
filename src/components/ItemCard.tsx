@@ -1,4 +1,4 @@
-import { Card, Group, Badge, ActionIcon, Text, Stack } from "@mantine/core";
+import { Card, Group, Badge, ActionIcon, Text } from "@mantine/core";
 import { IconTrash } from "@tabler/icons-react";
 
 type FoodProps = {
@@ -17,15 +17,13 @@ export default function ItemCard({name, price, quantity, category}:FoodProps) {
 
   return (
     /* Type additional text here. */
-    <Card>
+    <Card mt="xs">
       <Group justify="space-between" align="flex-start">
-        <Stack>
-          <Text>Name: {name}  Category: {category}</Text>
-          <Text>Price: {price} x {quantity}</Text>
-          <Badge color="yellow">total: {total}</Badge>
-        </Stack>
+          <Text fw={500}>{name}</Text>
+          <Text>{price} Bath x {quantity} = {total} Baht</Text>
+          <Badge color="green">{category}</Badge>
         <Group>
-          <ActionIcon><IconTrash/></ActionIcon>
+          <ActionIcon color="red"><IconTrash/></ActionIcon>
         </Group>
       </Group>
     </Card>

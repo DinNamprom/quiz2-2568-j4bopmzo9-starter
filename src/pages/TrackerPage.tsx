@@ -33,9 +33,6 @@ export default function FoodTracker() {
       <Modal opened={opened} onClose={open} onAdd={Item}/>
       <Button onClick={open}>Add Food Item</Button>
       {/* Type additional AddFoodModal here. */}
-      <ItemCard name="smt" price={"300"} quantity={"3"} category="Drink" onDelete={function (): void {
-        throw new Error("Function not implemented.");
-      } }/>
       <Divider my="md" />
       {/* Type additional total cost here. */}
       <Title order={4}>Total cost: {} Baht</Title>
@@ -44,7 +41,11 @@ export default function FoodTracker() {
       <Divider my="md" />
       {/* Type additional card here. */}
 
-      <Stack>{/* Type additional food card list here. */}</Stack>
+      <Stack>
+          <ItemCard name="smt" price={"300"} quantity={"3"} category="Drink" onDelete={function (): void {
+            throw new Error("Function not implemented.");
+          } }/>
+      </Stack>
     </Container>
   );
 }
