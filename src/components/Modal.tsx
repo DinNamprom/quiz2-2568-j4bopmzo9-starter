@@ -5,6 +5,7 @@ import {
   Select,
   Button,
   Container,
+  NumberInput,
 } from "@mantine/core";
 
 type AddFoodModalProps = {
@@ -27,27 +28,21 @@ export default function AddFoodModal({opened, onClose}: AddFoodModalProps) {
   const NameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
-  const PriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(event.target.value);
-  };
-  const QuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuantity(event.target.value);
-  };
 
   const handleSubmit = () => {
-    let isname = false;
-    let isprice = false;
-    let isquan = false;
-    let iscate = false;
+    let isname = true;
+    let isprice = true;
+    let isquan = true;
+    let iscate = true;
     let nquan: number = Number(quantity);
     let nprice: number = Number(price);
-    if (name !== "") isname = true;
-    if (price !== "" || nprice !== 0) isprice = true;
-    if (quantity !== "" || nquan !== 0) isquan = true;
-    if (category !== "" || category !== null) iscate = true;
+    if (name === "") isname = false;
+    if (price === "" || nprice === 0) isprice = false;
+    if (quantity === "" || nquan === 0) isquan = false;
+    if (category === "" || category === null) iscate = false;
 
     if (isname && isprice && isquan && iscate) {
-      console.log("add item");
+      console.log("Total Price = " + nprice*nquan);
     }
   };
 
@@ -61,23 +56,30 @@ export default function AddFoodModal({opened, onClose}: AddFoodModalProps) {
       <Container m="xs">
       <TextInput
         leftSectionPointerEvents="none"
-        label="Food name"
-        placeholder="name"
+        description= "Name of item"
+        label="Name of item"
+        placeholder="e.g., Chicken rice"
         onChange={NameChange}
       />
-      <TextInput
+      <NumberInput
         mt="md"
         rightSectionPointerEvents="none"
         label="Price"
-        placeholder="bath"
-        onChange={PriceChange}
+        placeholder="price per dish"
+        value={price}
+        onChange={setPrice}
+        min={1}
+        max={10000}
       />
-      <TextInput
+      <NumberInput
         mt="md"
         rightSectionPointerEvents="none"
         label="Quantity"
-        placeholder="number"
-        onChange={QuantityChange}
+        placeholder="Quantity"
+        value={quantity}
+        onChange={setQuantity}
+        min={1}
+        max={100}
       />
       <Select
         mt = "md"
